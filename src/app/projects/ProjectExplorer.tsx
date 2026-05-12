@@ -116,9 +116,9 @@ export function ProjectExplorer({ projects }: { projects: Project[] }) {
                     )}
 
                     {/* Content */}
-                    <div className="flex flex-1 flex-col p-7">
+                    <div className="flex flex-1 flex-col p-5 sm:p-7">
                       {/* Meta row */}
-                      <div className="flex items-baseline justify-between gap-3">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2 sm:gap-3">
                         <p className="font-mono text-[10px] uppercase tracking-[0.22em]">
                           <span className="text-iris-deep dark:text-iris">
                             {p.kind}
@@ -136,7 +136,7 @@ export function ProjectExplorer({ projects }: { projects: Project[] }) {
                       </div>
 
                       {/* Title */}
-                      <h3 className="mt-3 font-serif text-2xl leading-tight text-ink-950">
+                      <h3 className="mt-3 font-serif text-xl sm:text-2xl leading-tight text-ink-950">
                         {p.name}
                       </h3>
 
@@ -145,24 +145,26 @@ export function ProjectExplorer({ projects }: { projects: Project[] }) {
                         {p.summary}
                       </p>
 
-                      {/* Stack — dot-separated mono */}
-                      <p className="mt-5 border-t border-ink-100 pt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-500">
+                      {/* Stack — wrapped pills on mobile, dot-separated on larger */}
+                      <div className="mt-5 border-t border-ink-100 pt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-500">
                         <span className="text-ink-400">Stack</span>
                         <span aria-hidden className="mx-2 text-ink-300">·</span>
-                        {p.stack.map((s, idx) => (
-                          <span key={s}>
-                            {idx > 0 && (
-                              <span aria-hidden className="mx-2 text-ink-300">
-                                ·
-                              </span>
-                            )}
-                            <span className="text-ink-700">{s}</span>
-                          </span>
-                        ))}
-                      </p>
+                        <span className="inline-flex flex-wrap gap-x-1 gap-y-1">
+                          {p.stack.map((s, idx) => (
+                            <span key={s}>
+                              {idx > 0 && (
+                                <span aria-hidden className="mx-1 sm:mx-2 text-ink-300">
+                                  ·
+                                </span>
+                              )}
+                              <span className="text-ink-700">{s}</span>
+                            </span>
+                          ))}
+                        </span>
+                      </div>
 
                       {/* Footer — links */}
-                      <div className="mt-5 flex items-center justify-between gap-3">
+                      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
                         {p.repo && (
                           <Link
                             href={p.repo}
