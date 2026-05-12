@@ -28,7 +28,7 @@ const script = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://venny.dev"),
+  metadataBase: new URL("https://narla-venkata-anand-sai-kumar.github.io"),
   title: {
     default: `${profile.name} — ${profile.title}`,
     template: `%s · ${profile.short}`,
