@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     template: `%s · ${profile.short}`,
   },
   description: profile.tagline + " " + profile.about[0],
+  icons: {
+    icon: "/icon.png",
+  },
   keywords: [
     "Agentic AI",
     "LLM Infrastructure",
