@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Light theme (default) ---------- */
+:root {
+  /* Surfaces */
+  --paper: 250 250 249;        /* #fafaf9 cool neutral light */
+  --paper-soft: 244 244 242;   /* #f4f4f2 */
+  --paper-warm: 232 230 226;   /* #e8e6e2 */
+  --paper-card: 255 255 255;   /* #ffffff */
+
+  /* Text + lines (navy-tinted dark scale) */
+  --ink-950: 12 12 13;         /* #0c0c0d near-black */
+  --ink-900: 26 26 28;         /* #1a1a1c */
+  --ink-700: 64 64 68;         /* #404044 */
+  --ink-600: 92 92 98;         /* #5c5c62 */
+  --ink-500: 124 124 132;      /* #7c7c84 */
+  --ink-400: 158 158 168;      /* #9e9ea8 */
+  --ink-300: 196 196 204;      /* #c4c4cc */
+  --ink-200: 220 220 226;      /* #dcdce2 */
+  --ink-100: 232 232 234;      /* #e8e8ea */
+  --ink-50: 244 244 244;       /* #f4f4f4 */
+
+  /* Accent (lime / chartreuse) */
+  --iris: 132 204 22;          /* #84cc16 lime-500 */
+  --iris-deep: 101 163 13;     /* #65a30d lime-600 */
+  --iris-soft: 190 242 100;    /* #bef264 lime-300 */
+  --iris-wash: 236 252 203;    /* #ecfccb lime-100 */
+}
+
+/* ---------- Dark theme ---------- */
+.dark {
+  /* Surfaces */
+  --paper: 12 12 13;           /* #0c0c0d near-black */
+  --paper-soft: 22 22 24;      /* #161618 */
+  --paper-warm: 32 32 34;      /* #202022 */
+  --paper-card: 20 20 22;      /* #141416 */
+
+  /* Text + lines (light scale, inverted) */
+  --ink-950: 250 250 249;      /* near-white primary */
+  --ink-900: 232 232 230;      /* #e8e8e6 */
+  --ink-700: 168 168 172;      /* #a8a8ac */
+  --ink-600: 138 138 144;      /* #8a8a90 */
+  --ink-500: 112 112 118;      /* #707076 */
+  --ink-400: 86 86 92;          /* #56565c */
+  --ink-300: 62 62 66;          /* #3e3e42 */
+  --ink-200: 42 42 46;          /* #2a2a2e */
+  --ink-100: 32 32 36;          /* #202024 */
+  --ink-50: 22 22 24;           /* #161618 */
+
+  /* Accent (lime — slightly brighter for dark) */
+  --iris: 163 230 53;          /* #a3e635 lime-400 */
+  --iris-deep: 190 242 100;    /* #bef264 lime-300 */
+  --iris-soft: 101 163 13;     /* #65a30d lime-600 */
+  --iris-wash: 26 46 10;       /* #1a2e0a deep tinted lime */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(var(--paper));
+  color: rgb(var(--ink-950));
+  font-feature-settings: "ss01", "cv01", "cv02";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(var(--iris-soft));
+  color: rgb(var(--ink-950));
+}
+
+.serif {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-feature-settings: "ss01";
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dark .grain::before {
+  opacity: 0.05;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.4s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* Orbit animations for HeroOrbit */
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-ccw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes core-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.06); }
+}
