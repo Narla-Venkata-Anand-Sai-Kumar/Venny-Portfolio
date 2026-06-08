@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             screenshot services (thum.io etc.) capture the right theme. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var p=new URLSearchParams(location.search).get('theme');if(!p)return;p=p.toLowerCase();var d=document.documentElement;if(p==='dark'){d.classList.add('dark');d.style.colorScheme='dark';try{localStorage.setItem('theme','dark')}catch(_){}}else if(p==='light'){d.classList.remove('dark');d.style.colorScheme='light';try{localStorage.setItem('theme','light')}catch(_){}}else if(p==='system'||p==='auto'){try{localStorage.removeItem('theme')}catch(_){}var m=matchMedia('(prefers-color-scheme: dark)').matches;d.classList.toggle('dark',m);d.style.colorScheme=m?'dark':'light'}}catch(e){}})();`,
+            __html: `(function(){try{var s=new URLSearchParams(location.search).get('theme');var h=(location.hash||'').replace(/^#/,'').toLowerCase();var pa=location.pathname.toLowerCase();var p=(s||h||'').toLowerCase();if(!p){if(/(^|\\/)dark(\\/|$)/.test(pa))p='dark';else if(/(^|\\/)light(\\/|$)/.test(pa))p='light';}if(!p)return;var d=document.documentElement;if(p==='dark'){d.classList.add('dark');d.style.colorScheme='dark';try{localStorage.setItem('theme','dark')}catch(_){}}else if(p==='light'){d.classList.remove('dark');d.style.colorScheme='light';try{localStorage.setItem('theme','light')}catch(_){}}else if(p==='system'||p==='auto'){try{localStorage.removeItem('theme')}catch(_){}var m=matchMedia('(prefers-color-scheme: dark)').matches;d.classList.toggle('dark',m);d.style.colorScheme=m?'dark':'light'}}catch(e){}})();`,
           }}
         />
       </head>
