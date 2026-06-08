@@ -69,6 +69,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${sans.variable} ${serif.variable} ${script.variable}`}
     >
+      <head>
+        {/* Apply ?theme=dark|light from URL synchronously, before paint, so
+            screenshot services (thum.io etc.) capture the right theme. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=new URLSearchParams(location.search).get('theme');if(!p)return;p=p.toLowerCase();var d=document.documentElement;if(p==='dark'){d.classList.add('dark');d.style.colorScheme='dark';try{localStorage.setItem('theme','dark')}catch(_){}}else if(p==='light'){d.classList.remove('dark');d.style.colorScheme='light';try{localStorage.setItem('theme','light')}catch(_){}}else if(p==='system'||p==='auto'){try{localStorage.removeItem('theme')}catch(_){}var m=matchMedia('(prefers-color-scheme: dark)').matches;d.classList.toggle('dark',m);d.style.colorScheme=m?'dark':'light'}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="grain bg-paper text-ink-950 font-sans">
         <ThemeProvider
           attribute="class"
