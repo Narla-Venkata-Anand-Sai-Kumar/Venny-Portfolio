@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeFromQuery } from "@/components/ThemeFromQuery";
 import { FloatingMark } from "@/components/FloatingMark";
 import { profile } from "@/data/info";
 
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
+          <ThemeFromQuery />
           <Nav />
           <main className="relative z-10 min-h-[60vh]">{children}</main>
           <Footer />
