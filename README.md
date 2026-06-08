@@ -4,6 +4,10 @@ A multi-page portfolio for Venkata Anand Sai Kumar Narla — AI engineer at Ever
 
 Design is built around a custom **Iris on Vellum** palette — cool ivory paper, deep navy ink, vibrant iris-violet accent. Headlines set in Fraunces, body in Inter.
 
+
+[![Portfolio](https://image.thum.io/get/width/1600/crop/900/https://venkata-anand-sai-kumar-narla.netlify.app/)](https://venkata-anand-sai-kumar-narla.netlify.app/)
+
+
 ## Stack
 
 - **Next.js 15** (App Router) + **React 19**
