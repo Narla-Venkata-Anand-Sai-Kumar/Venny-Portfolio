@@ -1,23 +1,6 @@
 [build]
   command = "npm run build"
   publish = ".next"
-  functions = "netlify/functions"
-
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-
-[functions."readme-svg"]
-  # Headless Chromium needs the native binary + larger timeout. Use nft so
-  # node_modules is traced and shipped intact (esbuild can't bundle chromium).
-  node_bundler = "nft"
-  external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]
-  included_files = ["node_modules/@sparticuz/chromium/**"]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[[redirects]]
-  from = "/readme-svg"
-  to = "/.netlify/functions/readme-svg"
-  status = 200
