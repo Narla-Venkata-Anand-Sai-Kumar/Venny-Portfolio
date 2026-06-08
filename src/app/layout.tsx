@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="grain bg-paper text-ink-950 font-sans">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
