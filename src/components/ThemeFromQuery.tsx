@@ -11,6 +11,7 @@ export function ThemeFromQuery() {
     const params = new URLSearchParams(window.location.search);
     const t = (params.get("theme") || "").toLowerCase();
     if (t === "dark" || t === "light") setTheme(t);
+    else if (t === "system" || t === "auto") setTheme("system");
   }, [setTheme]);
 
   return null;
