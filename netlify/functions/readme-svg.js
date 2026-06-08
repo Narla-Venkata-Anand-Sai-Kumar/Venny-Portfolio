@@ -8,7 +8,8 @@
 //   ?fmt=svg|png         — output format (default svg). svg wraps the png so it
 //                          renders nicely on GitHub READMEs.
 
-// @sparticuz/chromium is ESM-only; load it lazily via dynamic import from CJS.
+// @sparticuz/chromium and puppeteer-core are both ESM-only in recent versions.
+// Load them lazily via dynamic import from this CommonJS function.
 let chromiumPromise = null;
 const loadChromium = () => {
     if (!chromiumPromise) {
@@ -16,7 +17,13 @@ const loadChromium = () => {
     }
     return chromiumPromise;
 };
-const puppeteer = require("puppeteer-core");
+let puppeteerPromise = null;
+const loadPuppeteer = () => {
+    if (!puppeteerPromise) {
+        puppeteerPromise = import("puppeteer-core").then((m) => m.default || m);
+    }
+    return puppeteerPromise;
+};
 
 const SITE_ORIGIN =
     process.env.PORTFOLIO_ORIGIN ||
@@ -26,7 +33,7 @@ const SITE_ORIGIN =
 let browserPromise = null;
 async function getBrowser() {
     if (!browserPromise) {
-        const chromium = await loadChromium();
+        const [chromium, puppeteer] = await Promise.all([loadChromium(), loadPuppeteer()]);
         browserPromise = puppeteer.launch({
             args: chromium.args,
             defaultViewport: chromium.defaultViewport,
