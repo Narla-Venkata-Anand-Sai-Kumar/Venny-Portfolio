@@ -1,6 +1,16 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  functions = "netlify/functions"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/readme-svg"
+  to = "/.netlify/functions/readme-svg"
+  status = 200
